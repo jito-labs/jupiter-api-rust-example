@@ -12,10 +12,18 @@ pub enum ComputeUnitPriceMicroLamports {
     Auto,
 }
 
+
+#[derive(Deserialize, Serialize, Debug, PartialEq)]
+#[serde(untagged)]
+enum PrioritizationFeeLamports {
+    Lamports(u64),
+    PrioritizationFeeLamportsObject(PrioritizationFeeLamportsObject),
+}
+
 #[derive(Deserialize, Serialize, Debug, PartialEq)]
 #[serde(rename_all = "camelCase")]
 // #[serde(untagged)]
-pub enum PrioritizationFeeLamports {
+pub enum PrioritizationFeeLamportsObject {
     /// Jupiter will automatically set a priority fee,
     /// and it will be capped at 5,000,000 lamports / 0.005 SOL
     #[serde(deserialize_with = "auto")]
