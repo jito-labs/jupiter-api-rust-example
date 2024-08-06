@@ -15,7 +15,7 @@ pub enum ComputeUnitPriceMicroLamports {
 
 #[derive(Deserialize, Serialize, Debug, PartialEq)]
 #[serde(untagged)]
-enum PrioritizationFeeLamports {
+pub enum PrioritizationFeeLamports {
     Lamports(u64),
     PrioritizationFeeLamportsObject(PrioritizationFeeLamportsObject),
 }
